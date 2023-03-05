@@ -16,4 +16,11 @@ router.get('/', function(req, res, next) {
     });
 });
 
+router.delete('/:id', function(req, res, next) {
+    Comment.findByIdAndDelete(req.params.id, function(err, userinfo) {
+        if (err) res.status(500).send(err);
+        else res.sendStatus(200);
+    });
+});
+
 module.exports = router;
